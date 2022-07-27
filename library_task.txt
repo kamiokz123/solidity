@@ -1,0 +1,112 @@
+// SPDX-License-Identifier: GPL-3.0
+
+pragma solidity ^0.8.12;
+
+
+// library for uint arrray
+
+library uin_lib{
+
+
+// function to show whole array
+
+    function show_array(uint[] memory a)internal pure returns(uint[] memory){
+    return a;
+
+    }
+
+
+    //  function to add (2) to data inside in array
+
+    function add_data(uint[] memory b)internal pure{
+        for(uint i=0;i<b.length;i++){
+            b[i]+=2;
+        }
+
+    } 
+
+
+}
+
+// library for string array
+
+library str_lib{
+
+
+// function to show whole array
+
+    function show_array(string [] memory a)internal pure returns(string[] memory){
+    return a;
+
+    }
+
+
+    //  function push data inside in array
+
+function show_data(string[] memory b)internal pure returns(string memory){
+        return b[0];
+
+    } 
+
+
+}
+
+
+
+// contract 
+
+contract using_lib{
+
+    uint[] uint_array;
+    string[] str_array;
+    using str_lib for string[];
+    using uin_lib for uint [];
+
+// show uint array
+
+    function show_uint_array()external view returns(uint[] memory) {
+        return uint_array.show_array();
+    }
+
+// add data to uint array 
+
+function adddata_to_uint()external{
+    uint_array[0]+=2;
+}
+
+//  set uint arrray
+
+function set_u_array(uint a)external{
+    uint_array.push(a);
+}
+
+
+
+// set string array
+
+function set_str_array(string memory a)external {
+    str_array.push(a);
+
+}
+
+
+// show string array
+
+function show_str_array()external view returns(string[] memory){
+   return str_array.show_array();
+
+
+}
+
+
+// showing data on 0 index in string array
+
+function show_index_data()external view returns(string memory){
+    return str_array.show_data();
+}
+
+
+
+
+
+}

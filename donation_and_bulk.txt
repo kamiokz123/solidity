@@ -1,0 +1,57 @@
+// SPDX-License-Identifier: GPL-3.0
+
+pragma solidity ^0.8.12;
+
+contract donation{
+    uint public count;
+    address owner;
+    address [] public users;
+    mapping(address=>uint256) public balance;
+    mapping(
+        address=>mapping(
+            string=>mapping(
+                string=>uint256
+            )
+        )
+    ) public detail_balance;
+
+
+    constructor(){
+
+    }
+receive()external payable{
+    balance[msg.sender]+=msg.value;
+    detail_balance[msg.sender]["saving"]["pkr"]+=msg.value;
+    count++;
+    require(!dublicate(),"user already donated");
+    users.push(msg.sender);
+}
+
+
+function dublicate()public view returns(bool){
+    bool valid;
+    for(uint256 i=0;i<users.length;i++){
+        if(users[i]==msg.sender){
+            valid = true;
+
+        }
+    }
+ return valid;
+}
+function show_array()external view returns(address [] memory){
+    return users;
+
+}
+
+function sending_reward()public {
+    
+    for(uint i=0;i<users.length;i++){
+         payable(users[i]).transfer(2);
+         balance[users[i]]+=2;
+       
+        }  
+        
+}
+
+
+}

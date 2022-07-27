@@ -1,0 +1,19 @@
+// SPDX-License-Identifier: GPL-3.0
+pragma solidity ^0.8.12;
+ 
+
+
+//  events
+// events is workink like console.log in solidity
+// indexed will used when we using web 3
+// indexed is only used on 3 parameters of on event
+
+
+
+contract events{
+    event balance(address indexed from,address to ,uint256 indexed value);
+
+    function send_balance(address to,uint val)public{
+        emit balance(msg.sender,to,val);
+    }
+}

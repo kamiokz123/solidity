@@ -1,0 +1,51 @@
+// SPDX-License-Identifier: GPL-3.0
+
+pragma solidity ^0.8.12;
+
+contract learn_enum{
+    enum status{
+        completed,
+        pending,
+        rejected
+    }
+
+    status public Status;
+    order public orrder;
+    order[] public orders;
+
+struct order{
+    address buyer;
+    status Statuss;
+}
+ function get_order()external view returns(order[] memory){
+     return orders;
+
+
+ }
+
+function get_status()external view returns (status){
+    return Status;
+}
+
+
+ function set_structurs(address _sts)external {
+     orrder=order({
+         buyer:_sts,
+         Statuss:Status
+
+     });
+     orders.push(orrder);
+ }
+ 
+
+ function get_struc()external view returns(order[] memory){
+     return orders;
+
+ }
+
+ function set_status(status _s)external{
+     Status=_s;
+
+ }
+
+}

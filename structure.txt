@@ -1,0 +1,34 @@
+// SPDX-License-Identifier: GPL-3.0
+
+pragma solidity ^0.8.12;
+ 
+contract structure{
+    struct  ani{
+        string name;
+        uint256 legs;
+        string nature;
+
+    }
+
+    ani public animal;
+    
+
+    function set_animal()external{
+        animal.name="dog";
+        animal.legs=4;
+        animal.nature="loyal";
+    }
+
+    function set_2nd_animal()external{
+        animal=ani({
+            name:"cat",
+            legs:4,
+            nature:"cute"
+        });
+
+       
+    }
+
+
+
+}

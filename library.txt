@@ -1,0 +1,33 @@
+// SPDX-License-Identifier: GPL-3.0
+
+pragma solidity ^0.8.12;
+
+library lib{
+    function len(uint[] memory a)internal pure returns(uint){
+        return a.length;
+
+    }
+
+}
+
+contract use_lib{
+    uint256 [] public user;
+    using lib for uint[];
+
+
+
+    function set_array(uint a)external {
+        user.push(a);
+
+    }
+
+
+    function use()external view returns (uint){
+        return user.len();
+
+
+    }
+
+
+
+}

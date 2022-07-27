@@ -1,0 +1,30 @@
+// SPDX-License-Identifier: GPL-3.0
+
+pragma solidity ^0.8.12;
+
+
+contract task{
+    // mapping(uint=>mapping(string=>bool)) public user;
+    string public _msg;
+    mapping(address=>bool) public user;
+
+
+    // function userr(uint a)external returns(bool){
+    //     user[a]["kami"]=true;
+    //     return user[a]["kami"]=true;
+
+    // }
+function adduser()external {
+    require(user[msg.sender]==false,"user already added");
+    user[msg.sender]=true;
+
+}
+function setmsg(string memory a)external returns(string memory){
+    require(user[msg.sender]==true,"you cant set msg");
+    _msg=a;
+    return _msg;
+
+}
+
+
+}

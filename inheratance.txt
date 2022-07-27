@@ -1,0 +1,44 @@
+// SPDX-License-Identifier: GPL-3.0
+
+pragma solidity ^0.8.12;
+
+// here we will learn inheretance
+// using virtual
+// using override
+
+// inheratance is basically used to make father and child contracts
+
+// here virtual is use in function it will allow this function to be updated in child contract
+
+// overide is actually the funtion who update the existing function and add new data means overwrite old data.
+
+contract a{
+
+    function fun1()public pure returns(string memory){
+        return "a";
+    }
+
+    function fun2()public pure returns(string memory){
+        return "b";
+    }
+
+    function fun3()public virtual pure returns(string memory){
+        return "c";
+    }
+
+}
+
+contract b is a {
+    
+    function fun3()public virtual override pure returns(string memory){
+        return "d";
+    }
+
+}
+
+contract c is b{
+    function fun3()public override pure returns(string memory){
+        return "e";
+    }
+
+}

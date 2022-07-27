@@ -1,0 +1,23 @@
+// SPDX-License-Identifier: GPL-3.0
+
+pragma solidity ^0.8.12;
+
+contract modi{
+    uint private pas;
+
+    modifier pa(){
+       require( pas==123,"wrong pass");
+       _;
+
+    }
+
+    function give_pass_to_set_msg(uint pass)external{
+        pas=pass;
+    }
+
+
+    function set_msg(string memory _msg)public pa view  returns(string memory){
+        return _msg;
+        
+    }
+}
