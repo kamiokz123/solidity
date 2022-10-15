@@ -1,6 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
+
+// this safemath library
+
 library SafeMath {
    
     function tryAdd(uint256 a, uint256 b) internal pure returns (bool, uint256) {
@@ -109,6 +112,9 @@ library SafeMath {
 }
 
 
+// this is interface to call function of erc20 token
+
+
 interface IERC20upgrade{
      event Transfer(address indexed from, address indexed to, uint256 value);
 
@@ -138,6 +144,10 @@ interface IERC20upgrade{
 }
 
 
+
+// this is staking contract
+// apy means anum per year
+
 contract staking{
     using SafeMath for uint256;
     struct users_data{
@@ -160,7 +170,9 @@ contract staking{
         apy=_apy;
         con_owner=msg.sender;
     }
-
+    
+    
+// this function for staking amount
 
 function stake_amount(uint256 amount_)external{
     require(staker[msg.sender].amount_locked==0,"you are already staker");
@@ -176,6 +188,7 @@ function stake_amount(uint256 amount_)external{
     emit stake(msg.sender,amount_);
 }
 
+// this function is for unstaking amount if someone is already staker
 
 function unstake_amount()external{
     require(staker[msg.sender].amount_locked>0,"you are not staker");
@@ -188,6 +201,9 @@ function unstake_amount()external{
     emit unstake(msg.sender,amount_);
 }
 
+
+// here we can check by giving address how that address can claim amount
+
 function claimable(address _user)public view returns(uint256){
      require(staker[msg.sender].amount_locked>0,"you are not staker");
 
@@ -197,6 +213,8 @@ function claimable(address _user)public view returns(uint256){
 
 
 }
+
+// if someone have rewarded then he want to take it so there he can redeem
 
 function redeem()external {
     require(staker[msg.sender].amount_locked>0,"you are not staker");
